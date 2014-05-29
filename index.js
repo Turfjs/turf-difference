@@ -3,8 +3,7 @@
 
 // depend on jsts for now https://github.com/bjornharrtell/jsts/blob/master/examples/overlay.html
 
-var jsts = require('jsts'),
-    _ = require('lodash')
+var jsts = require('jsts')
 
 module.exports = function(poly1, poly2, done){
   poly1 = correctRings(poly1)
@@ -17,18 +16,14 @@ module.exports = function(poly1, poly2, done){
   var parser = new jsts.io.GeoJSONParser()
   erased = parser.write(erased)
 
-  var newPoly = _.cloneDeep(poly1);
-  newPoly.geometry = erased
+  poly1.geometry = erased
 
-  done = done || function () {};
-
-  done(null, newPoly)
-  return newPoly;
+  return poly1;
 }
 
 function correctRings(poly){
-  _.each(poly.geometry.coordinates, function(ring){
-    var isWrapped =_.isEqual(ring[0], ring.slice(-1)[0])
+  poly.geometry.coordinates.forEach(function(ring){
+    var isWrapped = (ring[0][0] === ring.slice(-1)[0][0] && ring[0][1] === ring.slice(-1)[0][1])
     if(!isWrapped){
       ring.push(ring[0])
     }
