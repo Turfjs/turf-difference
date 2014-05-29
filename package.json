@@ -1,0 +1,32 @@
+{
+  "name": "turf-erase",
+  "version": "0.0.0",
+  "description": "erase features",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Turfjs/turf-erase.git"
+  },
+  "keywords": [
+    "turf",
+    "gis"
+  ],
+  "author": "Morgan Herlocker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Turfjs/turf-erase/issues"
+  },
+  "homepage": "https://github.com/Turfjs/turf-erase",
+  "devDependencies": {
+    "glob": "~4.0.0",
+    "tape": "~2.13.1"
+  },
+  "dependencies": {
+    "jsts": "~0.13.4",
+    "turf-featurecollection": "~0.1.0",
+    "lodash": "~2.4.1"
+  }
+}
