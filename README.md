@@ -6,6 +6,7 @@ Returns polygon 1 minus polygon 2.
 
 ```javascript
 var erase = require('turf-erase')
+var fs = require('fs')
 
 var poly1 = JSON.parse(fs.readFileSync('/path/to/poly1.geojson'))
 var poly2 = JSON.parse(fs.readFileSync('/path/to/poly2.geojson'))
