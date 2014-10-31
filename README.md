@@ -1,17 +1,34 @@
 turf-erase
-=============
-[![Build Status](https://travis-ci.org/Turfjs/turf-erase.svg?branch=master)](https://travis-ci.org/Turfjs/turf-erase)
+===
+[![build status](https://secure.travis-ci.org/Turfjs/turf-erase.png)](http://travis-ci.org/Turfjs/turf-erase)
 
-Returns polygon 1 minus polygon 2.
+Find the difference between two polygons by clipping the second polygon from the first.
 
-```javascript
-var erase = require('turf-erase')
-var fs = require('fs')
+##Install
 
-var poly1 = JSON.parse(fs.readFileSync('/path/to/poly1.geojson'))
-var poly2 = JSON.parse(fs.readFileSync('/path/to/poly2.geojson'))
+```sh
+npm install turf-intersect
+```
 
-var erased = erase(polys1, polys2)
+##Parameters
+name|description
+---|---
+feature1|Geometry or Feature
+feature2|Geometry or Feature
 
-console.log(erased)
+##Usage
+
+```js
+erase(poly1, poly2)
+```
+
+###Example
+
+```js
+var erase = require('turf-erase');
+var park = require('park.json');
+var lake = require('lake.json');
+
+var erased = erase(park, lake);
+console.log(erased);
 ```
