@@ -24,6 +24,9 @@ module.exports = function(poly1, poly2, done){
   erased = parser.write(erased);
 
   poly1.geometry = erased;
+  if(poly1.geometry.type === 'GeometryCollection' && poly1.geometry.geometries.length === 0) {
+    poly1 = [];
+  }
 
   return poly1;
 }
