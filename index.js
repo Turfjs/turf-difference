@@ -25,8 +25,12 @@ module.exports = function(poly1, poly2, done){
 
   poly1.geometry = erased;
   if(poly1.geometry.type === 'GeometryCollection' && poly1.geometry.geometries.length === 0) {
-    poly1 = [];
+    return;
+  } else {
+    return {
+      type: 'Feature',
+      properties: poly1.properties,
+      geometry: erased
+    };
   }
-
-  return poly1;
 }
