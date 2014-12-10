@@ -3,7 +3,7 @@ var erase = require('../'),
   glob = require('glob'),
   fs = require('fs');
 
-var REGEN = true;
+var REGEN = process.env.REGEN;
 
 test('erase', function(t){
   glob.sync(__dirname + '/fixtures/in/*.geojson').forEach(function(input) {
