@@ -1,6 +1,24 @@
 // depend on jsts for now https://github.com/bjornharrtell/jsts/blob/master/examples/overlay.html
 var jsts = require('jsts');
 
+/**
+ * Find the difference between two polygons by clipping the second
+ * polygon from the first.
+ *
+ * @module turf/erase
+ * @param {Polygon} a
+ * @param {Polygon} b
+ * @return {Polygon}
+ * @example
+ * var a = turf.polygon([[[10,0],[20,10],[20,0],[10,0]]]);
+ * a.properties.fill = '#0f0';
+ * var b = turf.polygon([[[10+5,0+5],[20+5,10+5],[20+5,0+5],[10+5,0+5]]]);
+ * b.properties.fill = '#00f';
+ * var erased = turf.erase(JSON.parse(JSON.stringify(a)), b);
+ * //=a
+ * //=b
+ * //=erased
+ */
 module.exports = function(poly1, poly2, done){
   if(poly1.type !== 'Feature') {
     poly1 = {
