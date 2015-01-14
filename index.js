@@ -2,7 +2,7 @@
 var jsts = require('jsts');
 
 /**
- * Find the difference between two polygons by clipping the second
+ * Finds the difference between two polygons by clipping the second
  * polygon from the first.
  *
  * @module turf/erase
