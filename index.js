@@ -37,21 +37,24 @@ var jsts = require('jsts');
  * //=erased
  */
 
-module.exports = function(poly1, poly2, done){
+module.exports = function(p1, p2, done){
+  var poly1 = JSON.parse(JSON.stringify(p1));
+  var poly2 = JSON.parse(JSON.stringify(p2));
   if(poly1.type !== 'Feature') {
     poly1 = {
       type: 'Feature',
       properties: {},
       geometry: poly1
-    }
+    };
   }
   if(poly2.type !== 'Feature') {
     poly2 = {
       type: 'Feature',
       properties: {},
       geometry: poly2
-    }
+    };
   }
+
   var reader = new jsts.io.GeoJSONReader();
   var a = reader.read(JSON.stringify(poly1.geometry));
   var b = reader.read(JSON.stringify(poly2.geometry));
@@ -60,7 +63,8 @@ module.exports = function(poly1, poly2, done){
   erased = parser.write(erased);
 
   poly1.geometry = erased;
-  if(poly1.geometry.type === 'GeometryCollection' && poly1.geometry.geometries.length === 0) {
+
+  if (poly1.geometry.type === 'GeometryCollection' && poly1.geometry.geometries.length === 0) {
     return;
   } else {
     return {
@@ -69,4 +73,4 @@ module.exports = function(poly1, poly2, done){
       geometry: erased
     };
   }
-}
+};
