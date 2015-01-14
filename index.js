@@ -6,9 +6,9 @@ var jsts = require('jsts');
  * polygon from the first.
  *
  * @module turf/erase
- * @param {Polygon} a
- * @param {Polygon} b
- * @return {Polygon}
+ * @param {Polygon} poly1 input Polygon feaure
+ * @param {Polygon} poly2 Polygon feature to erase from `poly1`
+ * @return {Polygon} a Polygon feature showing the area of `poly1` excluding the area of `poly2`
  * @example
  * var a = turf.polygon([[[10,0],[20,10],[20,0],[10,0]]]);
  * a.properties.fill = '#0f0';
@@ -19,6 +19,7 @@ var jsts = require('jsts');
  * //=b
  * //=erased
  */
+
 module.exports = function(poly1, poly2, done){
   if(poly1.type !== 'Feature') {
     poly1 = {
