@@ -10,27 +10,46 @@ var jsts = require('jsts');
  * @param {Polygon} poly2 Polygon feature to erase from `poly1`
  * @return {Polygon} a Polygon feature showing the area of `poly1` excluding the area of `poly2`
  * @example
- * var poly1 = turf.polygon([[
- *  [-46.738586, -23.596711],
- *  [-46.738586, -23.458207],
- *  [-46.560058, -23.458207],
- *  [-46.560058, -23.596711],
- *  [-46.738586, -23.596711]
- * ]]);
- * poly1.properties.fill = '#0f0';
- * var poly2 = turf.polygon([[
- *  [-46.650009, -23.631314],
- *  [-46.650009, -23.5237],
- *  [-46.509246, -23.5237],
- *  [-46.509246, -23.631314],
- *  [-46.650009, -23.631314]
- * ]]);
- * poly2.properties.fill = '#00f';
+ * var poly1 = {
+ *   "type": "Feature",
+ *   "properties": {
+ *     "fill": "#0f0"
+ *   },
+ *   "geometry": {
+ *     "type": "Polygon",
+ *     "coordinates": [[
+ *       [-46.738586, -23.596711],
+ *       [-46.738586, -23.458207],
+ *       [-46.560058, -23.458207],
+ *       [-46.560058, -23.596711],
+ *       [-46.738586, -23.596711]
+ *     ]]
+ *   }
+ * };
+ * var poly2 = {
+ *   "type": "Feature",
+ *   "properties": {
+ *     "fill": "#00f"
+ *   },
+ *   "geometry": {
+ *     "type": "Polygon",
+ *     "coordinates": [[
+ *       [-46.650009, -23.631314],
+ *       [-46.650009, -23.5237],
+ *       [-46.509246, -23.5237],
+ *       [-46.509246, -23.631314],
+ *       [-46.650009, -23.631314]
+ *     ]]
+ *   }
+ * };
  *
  * var erased = turf.erase(poly1, poly2);
  * erased.properties.fill = '#f00';
  *
- * var polygons = turf.featurecollection([poly1, poly2]);
+ * var polygons = {
+ *   "type": "FeatureCollection",
+ *   "features": [poly1, poly2]
+ * };
  *
  * //=polygons
  *
