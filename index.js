@@ -6,6 +6,7 @@ var jsts = require('jsts');
  * polygon from the first.
  *
  * @module turf/erase
+ * @category transformation
  * @param {Polygon} poly1 input Polygon feaure
  * @param {Polygon} poly2 Polygon feature to erase from `poly1`
  * @return {Polygon} a Polygon feature showing the area of `poly1` excluding the area of `poly2`
