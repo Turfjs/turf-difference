@@ -57,7 +57,7 @@ var jsts = require('jsts');
  * //=erased
  */
 
-module.exports = function(p1, p2, done){
+module.exports = function(p1, p2){
   var poly1 = JSON.parse(JSON.stringify(p1));
   var poly2 = JSON.parse(JSON.stringify(p2));
   if(poly1.type !== 'Feature') {
