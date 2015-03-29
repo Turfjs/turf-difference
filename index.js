@@ -57,7 +57,7 @@ var jsts = require('jsts');
  * //=erased
  */
 
-module.exports = function(p1, p2){
+module.exports = function(p1, p2) {
   var poly1 = JSON.parse(JSON.stringify(p1));
   var poly2 = JSON.parse(JSON.stringify(p2));
   if(poly1.type !== 'Feature') {
@@ -85,7 +85,7 @@ module.exports = function(p1, p2){
   poly1.geometry = erased;
 
   if (poly1.geometry.type === 'GeometryCollection' && poly1.geometry.geometries.length === 0) {
-    return;
+    return undefined;
   } else {
     return {
       type: 'Feature',
