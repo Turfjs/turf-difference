@@ -5,10 +5,10 @@ var jsts = require('jsts');
  * Finds the difference between two {@link Polygon|polygons} by clipping the second
  * polygon from the first.
  *
- * @module turf/erase
+ * @module turf/difference
  * @category transformation
  * @param {Feature<Polygon>} poly1 input Polygon feaure
- * @param {Feature<Polygon>} poly2 Polygon feature to erase from `poly1`
+ * @param {Feature<Polygon>} poly2 Polygon feature to subtract from `poly1`
  * @return {Feature<Polygon>} a Polygon feature showing the area of `poly1` excluding the area of `poly2`
  * @example
  * var poly1 = {
@@ -44,8 +44,8 @@ var jsts = require('jsts');
  *   }
  * };
  *
- * var erased = turf.erase(poly1, poly2);
- * erased.properties.fill = '#f00';
+ * var differenced = turf.difference(poly1, poly2);
+ * differenced.properties.fill = '#f00';
  *
  * var polygons = {
  *   "type": "FeatureCollection",
@@ -54,7 +54,7 @@ var jsts = require('jsts');
  *
  * //=polygons
  *
- * //=erased
+ * //=differenced
  */
 
 module.exports = function(p1, p2) {
