@@ -1,7 +1,7 @@
 {
-  "name": "turf-erase",
-  "version": "1.3.2",
-  "description": "erase features",
+  "name": "turf-difference",
+  "version": "2.0.0",
+  "description": "find the difference of spatial features",
   "main": "index.js",
   "scripts": {
     "test": "tape test/*.js",
