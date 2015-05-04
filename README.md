@@ -1,11 +1,11 @@
-# turf-erase
+# turf-difference
 
-[![build status](https://secure.travis-ci.org/Turfjs/turf-erase.png)](http://travis-ci.org/Turfjs/turf-erase)
+[![build status](https://secure.travis-ci.org/Turfjs/turf-difference.png)](http://travis-ci.org/Turfjs/turf-difference)
 
-erase features
+[Turf](http://turfjs.org/) difference module
 
 
-### `turf.erase(poly1, poly2)`
+### `turf.difference(poly1, poly2)`
 
 Finds the difference between two Polygon|polygons by clipping the second
 polygon from the first.
@@ -13,10 +13,10 @@ polygon from the first.
 
 ### Parameters
 
-| parameter | type                 | description                           |
-| --------- | -------------------- | ------------------------------------- |
-| `poly1`   | Feature\.\<Polygon\> | input Polygon feaure                  |
-| `poly2`   | Feature\.\<Polygon\> | Polygon feature to erase from `poly1` |
+| parameter | type                 | description                                |
+| --------- | -------------------- | ------------------------------------------ |
+| `poly1`   | Feature\.\<Polygon\> | input Polygon feaure                       |
+| `poly2`   | Feature\.\<Polygon\> | Polygon feature to difference from `poly1` |
 
 
 ### Example
@@ -55,8 +55,8 @@ var poly2 = {
   }
 };
 
-var erased = turf.erase(poly1, poly2);
-erased.properties.fill = '#f00';
+var differenced = turf.difference(poly1, poly2);
+differenced.properties.fill = '#f00';
 
 var polygons = {
   "type": "FeatureCollection",
@@ -65,7 +65,7 @@ var polygons = {
 
 //=polygons
 
-//=erased
+//=differenced
 ```
 
 
@@ -76,7 +76,7 @@ var polygons = {
 Requires [nodejs](http://nodejs.org/).
 
 ```sh
-$ npm install turf-erase
+$ npm install turf-difference
 ```
 
 ## Tests
