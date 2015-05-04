@@ -1,15 +1,15 @@
-var erase = require('../'),
+var difference = require('../'),
   test = require('tape'),
   glob = require('glob'),
   fs = require('fs');
 
 var REGEN = process.env.REGEN;
 
-test('erase', function(t){
+test('difference', function(t){
   glob.sync(__dirname + '/fixtures/in/*.geojson').forEach(function(input) {
       var features = JSON.parse(fs.readFileSync(input));
       var before = JSON.parse(JSON.stringify(features));
-      var output = erase(features[0], features[1]);
+      var output = difference(features[0], features[1]);
       if (REGEN) fs.writeFileSync(input.replace('/in/', '/out/'), JSON.stringify(output));
       t.deepEqual(before, features, 'does not mutate data');
       t.deepEqual(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/'))), input);
@@ -17,11 +17,11 @@ test('erase', function(t){
   t.end();
 });
 
-test('erase -- geometries', function(t){
+test('difference -- geometries', function(t){
   glob.sync(__dirname + '/fixtures/in/*.geojson').forEach(function(input) {
       var fcs = JSON.parse(fs.readFileSync(input));
       var before = JSON.parse(JSON.stringify(fcs));
-      var output = erase(fcs[0].geometry, fcs[1].geometry);
+      var output = difference(fcs[0].geometry, fcs[1].geometry);
       if (REGEN) fs.writeFileSync(input.replace('/in/', '/out/'), JSON.stringify(output));
       t.deepEqual(before, fcs, 'does not mutate data');
       t.deepEqual(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/'))), input);
@@ -29,11 +29,11 @@ test('erase -- geometries', function(t){
   t.end();
 });
 
-test('erase -- geometries', function(t){
+test('difference -- geometries', function(t){
   glob.sync(__dirname + '/fixtures/in/*.geojson').forEach(function(input) {
       var fcs = JSON.parse(fs.readFileSync(input));
       var before = JSON.parse(JSON.stringify(fcs));
-      var output = erase(fcs[0].geometry, fcs[1].geometry);
+      var output = difference(fcs[0].geometry, fcs[1].geometry);
       if (REGEN) fs.writeFileSync(input.replace('/in/', '/out/'), JSON.stringify(output));
       t.deepEqual(before, fcs, 'does not mutate data');
       t.deepEqual(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/'))), input);
@@ -41,9 +41,9 @@ test('erase -- geometries', function(t){
   t.end();
 });
 
-test('erase -- empty set', function(t) {
+test('difference -- empty set', function(t) {
   var polys = JSON.parse(fs.readFileSync(__dirname+'/fixtures/full.geojson'));
-  var result = erase(polys[1], polys[0]);
+  var result = difference(polys[1], polys[0]);
   t.deepEqual(result, undefined);
   t.notOk(result);
   t.end();
