@@ -1,7 +1,8 @@
 var difference = require('../'),
   test = require('tape'),
   glob = require('glob'),
-  fs = require('fs');
+  fs = require('fs')
+  equal = new(require('geojson-equality'));
 
 var REGEN = process.env.REGEN;
 
@@ -12,7 +13,7 @@ test('difference', function(t){
       var output = difference(features[0], features[1]);
       if (REGEN) fs.writeFileSync(input.replace('/in/', '/out/'), JSON.stringify(output));
       t.deepEqual(before, features, 'does not mutate data');
-      t.deepEqual(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/'))), input);
+      t.ok(equal.compare(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/')))), input);
   });
   t.end();
 });
@@ -24,7 +25,7 @@ test('difference -- geometries', function(t){
       var output = difference(fcs[0].geometry, fcs[1].geometry);
       if (REGEN) fs.writeFileSync(input.replace('/in/', '/out/'), JSON.stringify(output));
       t.deepEqual(before, fcs, 'does not mutate data');
-      t.deepEqual(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/'))), input);
+      t.ok(equal.compare(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/')))), input);
   });
   t.end();
 });
@@ -36,7 +37,7 @@ test('difference -- geometries', function(t){
       var output = difference(fcs[0].geometry, fcs[1].geometry);
       if (REGEN) fs.writeFileSync(input.replace('/in/', '/out/'), JSON.stringify(output));
       t.deepEqual(before, fcs, 'does not mutate data');
-      t.deepEqual(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/'))), input);
+      t.ok(equal.compare(output, JSON.parse(fs.readFileSync(input.replace('/in/', '/out/')))), input);
   });
   t.end();
 });
