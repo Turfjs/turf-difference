@@ -30,7 +30,7 @@
     "geojson-equality": "^0.1.4"
   },
   "dependencies": {
-    "gh-clipping-algorithm": "^0.4",
+    "gh-clipping-algorithm": "^0.*",
     "turf-featurecollection": "^1.0.1"
   }
 }
