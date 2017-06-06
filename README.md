@@ -1,3 +1,4 @@
+# DEPRECATED - replaced with [`@turf/difference`](https://github.com/Turfjs/turf/tree/master/packages/turf-difference)
 # turf-difference
 
 [![build status](https://secure.travis-ci.org/Turfjs/turf-difference.png)](http://travis-ci.org/Turfjs/turf-difference)
